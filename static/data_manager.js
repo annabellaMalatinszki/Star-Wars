@@ -8,14 +8,14 @@ app.dataManager = {
         request.onload = function () {
             if (request.status >= 200 && request.status < 400) {
                 data = JSON.parse(request.responseText);
-                var planets = extractplanets(data);
+                var planets = extractPlanets(data);
                 var nextPage = getNextPage(data);
                 var prevPage = getPrevPage(data);
                 app.dom.displayPlanets(planets);
                 app.dataManager.changePage(nextPage, prevPage);
             };
         };
-        function extractplanets(data) {
+        function extractPlanets(data) {
             var planetDatabase = [];
             for (var i = 0; i < data.results.length; i++) {
                 var planetData = [data.results[i].name,
@@ -41,6 +41,35 @@ app.dataManager = {
         };
         request.send();
     },
+
+
+    getResident: function (resPage) {
+        var request = new XMLHttpRequest();
+        request.open("GET", resPage, true);
+
+        request.onload = function () {
+            if (request.status >= 200 && request.status < 400) {
+                data = JSON.parse(request.responseText);
+                var resident = extractResident(data);
+                app.dom.displayResident(resident);
+            };
+        };
+        function extractResident(data) {
+            var residentData = [data.name,
+            data.height,
+            data.mass,
+            data.hair_color,
+            data.skin_color,
+            data.eye_color,
+            data.birth_year,
+            data.gender];
+            var resident = JSON.stringify(residentData);
+            return resident
+        };
+        request.send();
+    },
+
+
     changePage: function (nextPage, prevPage) {
         $("#next").on("click", function () {
             if (nextPage != null) {
