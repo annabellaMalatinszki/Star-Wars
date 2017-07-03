@@ -2,6 +2,7 @@ var app = app || {};
 
 app.dom = {
     displayPlanets: function (planets) {
+        $("#planets_table_body").empty();
         var planetDatabase = JSON.parse(planets);
         for (var i = 0; i < planetDatabase.length; i++) {
             var name = planetDatabase[i][0];
