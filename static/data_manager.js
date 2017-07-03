@@ -8,11 +8,11 @@ app.dataManager = {
         request.onload = function () {
             if (request.status >= 200 && request.status < 400) {
                 data = JSON.parse(request.responseText);
-                var planets = fuckfunction(data);
+                var planets = extractplanets(data);
                 app.dom.displayPlanets(planets);
             };
         };
-        function fuckfunction(fuck) {
+        function extractplanets(data) {
             var planetDatabase = [];
             for (var i = 0; i < data.results.length; i++) {
                 var planetData = [data.results[i].name,
