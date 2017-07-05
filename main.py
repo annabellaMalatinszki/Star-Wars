@@ -26,15 +26,37 @@ def register():
             account_manager.register_user(user_name, password)
 
             flash("Successfully registered as {}.".format(user_name))
+            flash("Logged in as {}.".format(user_name))
+            session["user"] = user_name
             return redirect(url_for("index"))
         else:
-            flash("Failed to register")
+            flash("Registration failed")
+
+    if g.user:
+        flash("Please log out first")
+        return redirect(url_for("index"))
 
     return render_template("register.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    if request.method == "POST":
+        user_name = request.form["login_user_name"]
+        password = request.form["login_pwd"]
+        match = account_manager.match_name_and_password(user_name, password)
+        if match:
+            session["user"] = user_name
+            flash("Successfully logged in as {}.".format(user_name))
+            # don't forget to add user_name to the navbar
+            return redirect(url_for("index"))
+
+        else:
+            flash("Logging in failed")
+
+    if g.user:
+        flash("Please log out first")
+        return redirect(url_for("index"))
     return render_template("login.html")
 
 #     if request.method == "POST":
@@ -47,18 +69,24 @@ def login():
 #     return render_template("login.html")
 #
 #
-# @app.route("/logout")
-# def logout():
-#     session.pop("user", None)
-#     return "Logged out"
-#
-#
-# @app.before_request
-# def before_request():
-#     g.user = None
-#     if "user" in session:
-#         g.user = session["user"]
-# # to make something password protected, you have to envelop it in "if g.user:"
+
+
+@app.route("/logout")
+def logout():
+    if g.user:
+        session.pop("user", None)
+        flash("Logged out.")
+        return redirect(url_for("index"))
+    flash("You were not logged in anyway.")
+    return redirect(url_for("index"))
+
+
+@app.before_request
+def before_request():
+    g.user = None
+    if "user" in session:
+        g.user = session["user"]
+# to make something password protected, you have to envelop it in "if g.user:"
 
 
 if __name__ == "__main__":

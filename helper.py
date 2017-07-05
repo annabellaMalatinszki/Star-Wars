@@ -20,3 +20,8 @@ def valid_user_name(user_name):
                 return True
 
     return False
+
+
+def test_passwords(password, right_password):
+    match = check_password_hash(right_password, password)
+    return match
