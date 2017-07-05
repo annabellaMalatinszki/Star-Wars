@@ -5,13 +5,13 @@
 <form action="{{ url_for('register') }}" method="POST">
     <div class="form-group">
         <label for="user_name">User name:</label>
-        <input type="input" class="form-control" id="reg_user_name" name="reg_user_name">
+        <input type="input" class="form-control" id="reg_user_name" name="reg_user_name" minlength="4">
     </div>
     <div class="form-group">
         <label for="pwd">Password:</label>
-        <input type="password" class="form-control" id="reg_pwd1" name="reg_pwd1">
+        <input type="password" class="form-control" id="reg_pwd1" name="reg_pwd1" minlength="4">
         <label for="pwd2">Password again:</label>
-        <input type="password" class="form-control" id="reg_pwd2" name="reg_pwd2">
+        <input type="password" class="form-control" id="reg_pwd2" name="reg_pwd2" minlength="4">
     </div>
     <button type="submit" class="btn btn-primary btn-md">Register</button>
 </form>
