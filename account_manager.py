@@ -16,6 +16,9 @@ def match_name_and_password(user_name, password):
     SQL = """SELECT password FROM accounts WHERE user_name = %s;"""
     data = (user_name,)
     fetch = True
-    right_password = data_manager.send_query(SQL, data, fetch)[0][0]
-    match = helper.test_passwords(password, right_password)
-    return True
+    result = data_manager.send_query(SQL, data, fetch)
+    if result:
+        right_password = result[0][0]
+        match = helper.test_passwords(password, right_password)
+        return True
+    return False
