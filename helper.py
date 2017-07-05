@@ -11,3 +11,12 @@ def hash_password(pwd1, pwd2):
                     return password
 
     return None
+
+
+def valid_user_name(user_name):
+    if len(user_name) >= 4 and len(user_name) <= 16:
+        for character in user_name:
+            if character in (ascii_lowercase + ascii_uppercase + digits + '-_'):
+                return True
+
+    return False

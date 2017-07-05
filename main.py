@@ -18,10 +18,11 @@ def index():
 def register():
     if request.method == "POST":
         user_name = request.form["reg_user_name"]
+        user_name_valid = helper.valid_user_name(user_name)
         pwd1 = request.form["reg_pwd1"]
         pwd2 = request.form["reg_pwd2"]
         password = helper.hash_password(pwd1, pwd2)
-        if password:
+        if password and user_name_valid:
             account_manager.register_user(user_name, password)
 
             flash("Successfully registered as {}.".format(user_name))
