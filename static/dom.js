@@ -66,7 +66,7 @@ app.dom = {
             };
         };
         for (var i = 0; i < res.length; i++) {
-            var resPage = res[i];
+            var resPage = res[i].replace("http", "https");
             app.dataManager.getResident(resPage);
         };
     },
