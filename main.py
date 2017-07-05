@@ -1,12 +1,11 @@
 from flask import Flask, url_for, render_template, redirect, request, session, flash, g
-import os
 
 import data_manager
 import account_manager
 import helper
 
 app = Flask(__name__)
-app.secret_key = os.urandom(24)
+app.secret_key = "very_secret_key"
 
 
 @app.route("/")
@@ -86,8 +85,3 @@ def before_request():
     g.user = None
     if "user" in session:
         g.user = session["user"]
-# to make something password protected, you have to envelop it in "if g.user:"
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
