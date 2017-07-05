@@ -3,7 +3,7 @@ var app = app || {};
 app.dataManager = {
     getPlanets: function (page) {
         var request = new XMLHttpRequest();
-        request.open("GET", page, true);
+        request.open("GET", page.replace("http", "https"), true);
 
         request.onload = function () {
             if (request.status >= 200 && request.status < 400) {
