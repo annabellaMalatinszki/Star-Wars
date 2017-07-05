@@ -2,19 +2,17 @@
 {% block title%} Register {% endblock %}
 
 {% block content %}
-<div class="container">
-    <form>
-        <div class="form-group">
-            <label for="user_name">User name:</label>
-            <input type="input" class="form-control" id="user_name">
-        </div>
-        <div class="form-group">
-            <label for="pwd">Password:</label>
-            <input type="password" class="form-control" id="pwd">
-            <label for="pwd2">Password again:</label>
-            <input type="password" class="form-control" id="pwd2">
-        </div>
-        <button type="submit" class="btn btn-primary btn-md">Register</button>
-    </form>
-</div>
+<form action="{{ url_for('register') }}" method="POST">
+    <div class="form-group">
+        <label for="user_name">User name:</label>
+        <input type="input" class="form-control" id="reg_user_name" name="reg_user_name">
+    </div>
+    <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="reg_pwd1" name="reg_pwd1">
+        <label for="pwd2">Password again:</label>
+        <input type="password" class="form-control" id="reg_pwd2" name="reg_pwd2">
+    </div>
+    <button type="submit" class="btn btn-primary btn-md">Register</button>
+</form>
 {% endblock %}
