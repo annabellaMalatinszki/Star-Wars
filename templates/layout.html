@@ -22,10 +22,18 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="{{ url_for('index') }}">Planet List</a></li>
                 <li><a href="#">Voting statistics</a></li>
-                <li><a href="{{ url_for("register") }}">Registration</a></li>
-                <li><a href="{{ url_for("login") }}">Login</a></li>
-                <li><a href="#">Logout</a></li>
+                {% if session.user %}
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                <li><a href="{{ url_for('register') }}">Registration</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                {% endif %}
             </ul>
+            {% if session.user %}
+            <a id="account_name">Signed in as {{ session.user }}</a>
+            {% else %}
+            <a id="account_name">Not signed in</a>
+            {% endif %}
         </div>
     </nav>
 

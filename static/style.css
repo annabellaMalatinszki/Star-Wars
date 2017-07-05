@@ -9,3 +9,12 @@ table {
 .form-control {
     width: 400px;
 }
+
+#account_name {
+    float: right;
+    text-decoration: none;
+    color: #777;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 80px;
+}
