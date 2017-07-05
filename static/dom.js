@@ -34,8 +34,12 @@ app.dom = {
                                                 <td class="surface_water">${surfaceWater}</td>
                                                 <td class="population">${population}</td>
                                                 ${residents}
-                                                <td><button type=button class="vote" href="#">Vote</td>
+                                                <td><button type=button class="vote" id="vote_button" href="#">Vote</td>
                                             </tr>`);
+
+            if ($("#account_name").text() === "Not signed in") {
+                $(".vote").hide()
+            };
         };
         app.dom.modalPop(planets);
     },
