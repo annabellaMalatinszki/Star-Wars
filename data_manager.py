@@ -1,7 +1,6 @@
 import psycopg2
 import os
 import urllib
-import config
 
 
 def send_query(SQL, data, fetch):
