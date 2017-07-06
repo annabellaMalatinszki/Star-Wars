@@ -89,23 +89,10 @@ app.dataManager = {
         request.onload = function () {
             if (request.status >= 200 && request.status < 400) {
                 data = JSON.parse(request.responseText);
-                var stats = extractStats(data);
+                var stats = JSON.stringify(data);
                 console.log(stats);
                 app.dom.showStats(stats);
             };
-        };
-        function extractStats(data) {
-            var statData = [];
-            for (var i = 0; i < data.length; i++) {
-                var planetVote = {
-                    "planetName": i[0],
-                    "vote": i[1]
-                };
-                statData.push(planetVote);
-            };
-
-            var stats = JSON.stringify(statData);
-            return stats
         };
         request.send();
     }
