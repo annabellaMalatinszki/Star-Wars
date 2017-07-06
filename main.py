@@ -104,4 +104,5 @@ def vote():
 @app.route("/api/stats/")
 def get_stats_from_database():
     planet_stats = stat_manager.request_stats()
-    return jsonify(planet_stats)
+    if planet_stats:
+        return jsonify(planet_stats)
