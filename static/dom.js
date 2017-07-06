@@ -35,10 +35,9 @@ app.dom = {
                                                 <td class="surface_water">${surfaceWater}</td>
                                                 <td class="population">${population}</td>
                                                 ${residents}
-                                                <td><button type=button class="vote" id="vote_button${id}" data-id:"${id}>Vote</td>
+                                                <td><button type=button class="vote" id="vote_button${id}" data-id="${id}">Vote</td>
                                             </tr>`);
 
-            $(".vote").off("click");
             $(".vote").on("click", function () {
                 if ($(this).data("id") === id) {
                     console.log("voted on", id);
