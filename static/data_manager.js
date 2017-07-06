@@ -89,8 +89,8 @@ app.dataManager = {
         request.onload = function () {
             if (request.status >= 200 && request.status < 400) {
                 data = JSON.parse(request.responseText);
-                console.log(data);
                 var stats = extractStats(data);
+                console.log(stats);
                 app.dom.showStats(stats);
             };
         };
