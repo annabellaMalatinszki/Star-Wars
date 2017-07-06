@@ -59,5 +59,18 @@ app.dataManager = {
             return resident
         };
         request.send();
+    },
+    sendVote: function (planetId, planetName) {
+        var request = new XMLHttpRequest();
+        request.open("POST", "/api/vote", true);
+
+        request.onload = function () {
+            if (request.status >= 200 && request.status < 400) {
+                data = JSON.parse(request.responseText);
+                if (data === "success") {
+                    app.dom.disableVote(planetId)
+                };
+            };
+        };
     }
 }

@@ -3,7 +3,9 @@ var app = app || {};
 app.init = function () {
     app.dataManager.getPlanets("http://swapi.co/api/planets/");
     $('#planets_table').on('click', '.vote', function () {
-        alert($(this).data("id"));
+        var planetId = $(this).data("id");
+        var planetName = $(this).data("planet_name");
+        app.dataManager.sendVote(planetId, planetName);
     });
 };
 

@@ -35,7 +35,7 @@ app.dom = {
                                                 <td class="surface_water">${surfaceWater}</td>
                                                 <td class="population">${population}</td>
                                                 ${residents}
-                                                <td><button type=button class="vote" id="vote_button${id}" data-id="${id}">Vote</td>
+                                                <td><button type=button class="vote" id="vote_button${id}" data-id="${id}" data-planet_name="${name}">Vote</td>
                                             </tr>`);
 
 
@@ -97,6 +97,8 @@ app.dom = {
                                                             <td>${gender}</td>
                                                         </tr>`);
     },
+
+
     changePage: function (nextPage, prevPage) {
         $("#next").off("click");
         $("#previous").off("click");
@@ -110,5 +112,11 @@ app.dom = {
                 app.dataManager.getPlanets(prevPage);
             });
         };
+    },
+
+
+    disableVote: function (planetId) {
+        $("#vote_button" + planetId).off("click");
+        $("#vote_button" + planetId).text("Voted");
     }
 }

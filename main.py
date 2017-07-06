@@ -1,8 +1,10 @@
-from flask import Flask, url_for, render_template, redirect, request, session, flash, g
+from flask import Flask, url_for, render_template, redirect, request, session, flash, g, jsonify
 
 import data_manager
 import account_manager
+import vote_manager
 import helper
+
 
 app = Flask(__name__)
 app.secret_key = "very_secret_key"
@@ -85,3 +87,13 @@ def before_request():
     g.user = None
     if "user" in session:
         g.user = session["user"]
+
+
+@app.route("/api/vote", methods=["POST"])
+def vote(planet_id, planet_name):
+    if g.user:
+        user = session["user"]
+        voted = vote_manager.register_vote(user, planet_id, planet_name)
+        if voted:
+            flash("Voted on {}."format(planet_name))
+            return jsonify("success")
