@@ -62,7 +62,7 @@ app.dataManager = {
     },
     sendVote: function (planetId, planetName) {
         var request = new XMLHttpRequest();
-        request.open("POST", "/api/vote", true);
+        request.open("POST", "/api/vote/", true);
 
         request.onload = function () {
             if (request.status >= 200 && request.status < 400) {
