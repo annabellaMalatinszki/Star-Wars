@@ -95,5 +95,5 @@ def vote(planet_id, planet_name):
         user = session["user"]
         voted = vote_manager.register_vote(user, planet_id, planet_name)
         if voted:
-            flash("Voted on {}."format(planet_name))
+            flash("Voted on {}.".format(planet_name))
             return jsonify("success")
