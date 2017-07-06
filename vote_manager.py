@@ -3,7 +3,7 @@ import data_manager
 
 
 def register_vote(user_name, planet_id, planet_name):
-    user_id = get_user_id(user_name)
+    user_id = get_user_id(user_name)[0]
     submission_time = '{:%Y-%m-%d %H:%M:%S}'.format(datetime.now())
     SQL = """INSERT INTO planet_votes(planet_id, planet_name, user_id, submission_time)
             VALUES (%s, %s, %s, %s);"""
