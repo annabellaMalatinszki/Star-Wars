@@ -12,7 +12,7 @@ app.dataManager = {
                 var nextPage = getNextPage(data);
                 var prevPage = getPrevPage(data);
                 app.dom.displayPlanets(planets);
-                app.dataManager.changePage(nextPage, prevPage);
+                app.dom.changePage(nextPage, prevPage);
             };
         };
         function extractPlanets(data) {
@@ -32,15 +32,15 @@ app.dataManager = {
             return planets
         };
         function getNextPage(data) {
-            var nextPage = data.next;
-            if (nextPage != null) {
+            var nextPage = data.next || [];
+            if (nextPage != null && nextPage != []) {
                 nextPage.replace("http", "https");
             }
             return nextPage
         };
         function getPrevPage(data) {
-            var prevPage = data.previous;
-            if (prevPage != null) {
+            var prevPage = data.previous || [];
+            if (prevPage != null && prevPage != []) {
                 prevPage.replace("http", "https");
             }
             return prevPage
@@ -73,19 +73,5 @@ app.dataManager = {
             return resident
         };
         request.send();
-    },
-
-
-    changePage: function (nextPage, prevPage) {
-        $("#next").on("click", function () {
-            if (nextPage != null) {
-                app.dataManager.getPlanets(nextPage);
-            };
-        });
-        $("#previous").on("click", function () {
-            if (prevPage != null) {
-                app.dataManager.getPlanets(prevPage);
-            };
-        });
     }
 }

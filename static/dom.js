@@ -92,5 +92,19 @@ app.dom = {
                                                             <td>${birthYear}</td>
                                                             <td>${gender}</td>
                                                         </tr>`);
+    },
+    changePage: function (nextPage, prevPage) {
+        $("#next").on("click", function () {
+            $("#next").off("click");
+            if (nextPage != null) {
+                app.dataManager.getPlanets(nextPage);
+            };
+        });
+        $("#previous").on("click", function () {
+            $("#previous").off("click");
+            if (prevPage != null) {
+                app.dataManager.getPlanets(prevPage);
+            };
+        });
     }
 }
