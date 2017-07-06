@@ -3,7 +3,7 @@ var app = app || {};
 app.dataManager = {
     getPlanets: function (page) {
         var request = new XMLHttpRequest();
-        request.open("GET", page, true);
+        request.open("GET", page.replace("http", "https"), true);
 
         request.onload = function () {
             if (request.status >= 200 && request.status < 400) {
@@ -32,17 +32,11 @@ app.dataManager = {
             return planets
         };
         function getNextPage(data) {
-            var nextPage = data.next || "";
-            if (nextPage != null || nextPage != "") {
-                nextPage.replace("http", "https");
-            }
+            var nextPage = data.next;
             return nextPage
         };
         function getPrevPage(data) {
-            var prevPage = data.previous || "";
-            if (prevPage != null || prevPage != "") {
-                prevPage.replace("http", "https");
-            }
+            var prevPage = data.previous;
             return prevPage
         };
         request.send();
