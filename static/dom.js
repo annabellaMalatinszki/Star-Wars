@@ -126,7 +126,7 @@ app.dom = {
             var button = $(event.relatedTarget);
             var statData = JSON.parse(stats)
             var modalTitle = "Voting Statistics";
-            $("#myModal2").find(".modal-title").text(modalTitle);
+            $("#myModal2").find(".modal-title2").text(modalTitle);
             $("#myModal2").find("#stats_table_body").empty();
             for (var i = 0; i < statData.length; i++) {
                 var planetName = [i][0];
