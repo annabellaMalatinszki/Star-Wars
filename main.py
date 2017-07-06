@@ -89,7 +89,7 @@ def before_request():
         g.user = session["user"]
 
 
-@app.route("/api/vote", methods=["POST"])
+@app.route("/api/vote/", methods=["POST"])
 def vote(planet_id, planet_name):
     if g.user:
         user = session["user"]
