@@ -90,9 +90,11 @@ def before_request():
 
 
 @app.route("/api/vote/", methods=["POST"])
-def vote(planet_id, planet_name):
+def vote():
     if g.user:
         user = session["user"]
+        planet_id = request.form["planet_id"]
+        planet_name = request.from["planet_name"]
         voted = vote_manager.register_vote(user, planet_id, planet_name)
         if voted:
             flash("Voted on {}.".format(planet_name))

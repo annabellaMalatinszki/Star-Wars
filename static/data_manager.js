@@ -62,6 +62,9 @@ app.dataManager = {
     },
     sendVote: function (planetId, planetName) {
         var request = new XMLHttpRequest();
+        var params = new FormData;
+        params.append("planet_id", planetId);
+        params.append("planet_name", planetName)
         request.open("POST", "/api/vote/", true);
 
         request.onload = function () {
@@ -73,6 +76,6 @@ app.dataManager = {
                 };
             };
         };
-        request.send();
+        request.send(params);
     }
 }
