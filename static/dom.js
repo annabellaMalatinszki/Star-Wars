@@ -38,12 +38,8 @@ app.dom = {
                                                 <td><button type=button class="vote" id="vote_button${id}" data-id="${id}">Vote</td>
                                             </tr>`);
 
-            $(".vote").on("click", function () {
-                console.log("kdfgkj");
-                if ($(this).data("id") === id) {
-                    console.log("voted on", id);
-                };
-            });
+            var buttonId = "vote_button" + id;
+            app.dom.vote(buttonId);
 
 
             if ($("#account_name").text() === "Not signed in") {
@@ -117,5 +113,12 @@ app.dom = {
                 app.dataManager.getPlanets(prevPage);
             });
         };
+    },
+    vote: function (buttonId) {
+        $(".vote").on("click", function () {
+            if ($(this).data("id") === buttonId) {
+                console.log("voted on", buttonId);
+            };
+        });
     }
 }
