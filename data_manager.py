@@ -21,7 +21,10 @@ def send_query(SQL, data, fetch):
     else:
         conn.autocommit = True
         with conn.cursor() as cursor:
-            cursor.execute(SQL, data)
+            if data:
+                cursor.execute(SQL, data)
+            else:
+                cursor.execute(SQL)
             if fetch:
                 result = cursor.fetchall()
                 if result:

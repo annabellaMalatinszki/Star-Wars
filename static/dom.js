@@ -49,6 +49,8 @@ app.dom = {
 
     modalPop: function (planets) {
         $("#myModal").on('show.bs.modal', function (event) {
+            $("#stats_table").hide();
+            $("#residents_table").show();
             var button = $(event.relatedTarget);
             var planetDatabase = JSON.parse(planets)
             var residentList = [];
@@ -118,5 +120,26 @@ app.dom = {
     disableVote: function (planetId) {
         $("#vote_button" + planetId).off("click");
         $("#vote_button" + planetId).text("Voted");
+    },
+
+
+    showStats: function (stats) {
+        $("#myModal").on('show.bs.modal', function (event) {
+            $("#residents_table").hide();
+            $("#stats_table").show();
+            var button = $(event.relatedTarget);
+            var statData = JSON.parse(stats)
+            var modalTitle = "Voting Statistics";
+            $("#myModal").find(".modal-title").text(modalTitle);
+            $("#myModal").find("#stats_table_body").empty();
+            for (var i = 0; i < statData.length; i++) {
+                var planetName = [i].planetName;
+                var votes = [i].vote;
+                $("#myModal").find("#stats_table_body").append(`<tr>
+                                                                    <td>${planetName}</td>
+                                                                    <td>${votes}</td>
+                                                                </tr>`)
+            };
+        });
     }
 }

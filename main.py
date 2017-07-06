@@ -3,6 +3,7 @@ from flask import Flask, url_for, render_template, redirect, request, session, f
 import data_manager
 import account_manager
 import vote_manager
+import stat_manager
 import helper
 
 
@@ -97,5 +98,10 @@ def vote():
         planet_name = request.form["planet_name"]
         voted = vote_manager.register_vote(user, planet_id, planet_name)
         if voted:
-            flash("Voted on {}.".format(planet_name))
             return jsonify("success")
+
+
+@app.route("/api/stats/")
+def get_stats_from_database():
+    planet_stats = stat_manager.request_stats()
+    return jsonify(planet_stats)
