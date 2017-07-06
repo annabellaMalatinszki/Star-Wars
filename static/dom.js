@@ -67,6 +67,7 @@ app.dom = {
         };
         if (res != undefined) {
             for (var i = 0; i < res.length; i++) {
+                var resPage = res[i];
                 app.dataManager.getResident(resPage);
             };
         };
