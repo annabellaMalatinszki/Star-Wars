@@ -11,8 +11,9 @@ app.dataManager = {
                 var planets = extractPlanets(data);
                 var nextPage = data.next;
                 var prevPage = data.previous;
+                console.log(nextPage);
+                console.log(prevPage);
                 app.dom.displayPlanets(planets);
-                app.dom.changePage(nextPage, prevPage);
             };
         };
         function extractPlanets(data) {
