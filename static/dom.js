@@ -5,6 +5,7 @@ app.dom = {
         $("#planets_table_body").empty();
         var planetDatabase = JSON.parse(planets);
         for (var i = 0; i < planetDatabase.length; i++) {
+            var id = i + 2;
             var name = planetDatabase[i][0];
             var diameter = planetDatabase[i][1];
             var climate = planetDatabase[i][2];
@@ -34,8 +35,16 @@ app.dom = {
                                                 <td class="surface_water">${surfaceWater}</td>
                                                 <td class="population">${population}</td>
                                                 ${residents}
-                                                <td><button type=button class="vote" id="vote_button" href="#">Vote</td>
+                                                <td><button type=button class="vote" id="vote_button${id}" data-id:"${id}>Vote</td>
                                             </tr>`);
+
+            $(".vote").off("click");
+            $(".vote").on("click", function () {
+                if ($(this).data("id") === id) {
+                    console.log("voted on", id);
+                };
+            });
+
 
             if ($("#account_name").text() === "Not signed in") {
                 $(".vote").hide()
