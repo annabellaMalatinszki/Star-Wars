@@ -11,16 +11,20 @@ app.dataManager = {
                 var planets = extractPlanets(data);
                 var nextPage = data.next;
                 var prevPage = data.previous;
+                console.log(nextPage);
+                console.log(prevPage);
+                $("#next").off("click");
+                $("#previous").off("click");
                 if (nextPage != null) {
-                    $("#next").onclick = function () {
+                    $("#next").on("click", function () {
                         app.dataManager.getPlanets(nextPage);
-                    };
+                    });
                 };
                 if (prevPage != null) {
-                    $("#previous").onclick = function () {
+                    $("#previous").on("click", function () {
                         app.dataManager.getPlanets(nextPage);
-                    }
-                }
+                    });
+                };
                 app.dom.displayPlanets(planets);
             };
         };
