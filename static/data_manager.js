@@ -33,14 +33,14 @@ app.dataManager = {
         };
         function getNextPage(data) {
             var nextPage = data.next || "";
-            if (nextPage != null && nextPage != "") {
+            if (nextPage != null || nextPage != "") {
                 nextPage.replace("http", "https");
             }
             return nextPage
         };
         function getPrevPage(data) {
             var prevPage = data.previous || "";
-            if (prevPage != null && prevPage != "") {
+            if (prevPage != null || prevPage != "") {
                 prevPage.replace("http", "https");
             }
             return prevPage
