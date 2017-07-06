@@ -38,10 +38,6 @@ app.dom = {
                                                 <td><button type=button class="vote" id="vote_button${id}" data-id="${id}">Vote</td>
                                             </tr>`);
 
-            var buttonId = $(".vote").data("id");
-            console.log(buttonId);
-            app.dom.vote(buttonId);
-
 
             if ($("#account_name").text() === "Not signed in") {
                 $(".vote").hide()
@@ -114,14 +110,5 @@ app.dom = {
                 app.dataManager.getPlanets(prevPage);
             });
         };
-    },
-    vote: function (buttonId) {
-        $(".vote").on("click", function () {
-            if ($(this).data("id") === buttonId) {
-                $("#vote_button${buttonId}").off("click");
-                $("#vote_button${buttonId}").toggle();
-                console.log("voted on", buttonId);
-            };
-        });
     }
 }
