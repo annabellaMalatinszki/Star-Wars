@@ -38,7 +38,8 @@ app.dom = {
                                                 <td><button type=button class="vote" id="vote_button${id}" data-id="${id}">Vote</td>
                                             </tr>`);
 
-            var buttonId = "vote_button" + id;
+            var buttonId = $(".vote").data("id");
+            console.log(buttonId);
             app.dom.vote(buttonId);
 
 
