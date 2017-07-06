@@ -118,6 +118,8 @@ app.dom = {
     vote: function (buttonId) {
         $(".vote").on("click", function () {
             if ($(this).data("id") === buttonId) {
+                $("#vote_button${buttonId}").off("click");
+                $("#vote_button${buttonId}").toggle();
                 console.log("voted on", buttonId);
             };
         });
