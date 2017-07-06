@@ -94,17 +94,21 @@ app.dom = {
                                                         </tr>`);
     },
     changePage: function (nextPage, prevPage) {
-        $("#next").on("click", function () {
+        if (nextPage === "null") {
             $("#next").off("click");
-            if (nextPage != null) {
+        } else {
+            $("#next").on("click", function () {
+                $("#next").off("click");
                 app.dataManager.getPlanets(nextPage);
-            };
-        });
-        $("#previous").on("click", function () {
+            });
+        }
+        if (prevPage === "null") {
             $("#previous").off("click");
-            if (prevPage != null) {
+        } else {
+            $("#previous").on("click", function () {
+                $("#previous").off("click");
                 app.dataManager.getPlanets(prevPage);
-            };
-        });
+            });
+        }
     }
 }

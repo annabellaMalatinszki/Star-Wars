@@ -9,8 +9,8 @@ app.dataManager = {
             if (request.status >= 200 && request.status < 400) {
                 data = JSON.parse(request.responseText);
                 var planets = extractPlanets(data);
-                var nextPage = getNextPage(data);
-                var prevPage = getPrevPage(data);
+                var nextPage = data.next;
+                var prevPage = data.previous;
                 app.dom.displayPlanets(planets);
                 app.dom.changePage(nextPage, prevPage);
             };
@@ -30,14 +30,6 @@ app.dataManager = {
             };
             var planets = JSON.stringify(planetDatabase);
             return planets
-        };
-        function getNextPage(data) {
-            var nextPage = data.next;
-            return nextPage
-        };
-        function getPrevPage(data) {
-            var prevPage = data.previous;
-            return prevPage
         };
         request.send();
     },
