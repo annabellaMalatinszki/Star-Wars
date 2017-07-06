@@ -32,7 +32,7 @@ app.dataManager = {
             return planets
         };
         function getNextPage(data) {
-            var nextPage = data.next.replace("http", "https");
+            var nextPage = data.next;
             if (nextPage != null) {
                 nextPage.replace("http", "https");
             }

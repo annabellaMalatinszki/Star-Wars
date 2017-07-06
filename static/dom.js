@@ -62,7 +62,7 @@ app.dom = {
     getResidentList: function (planetDatabase, planetName) {
         for (var i = 0; i < planetDatabase.length; i++) {
             if (planetDatabase[i][0] === planetName) {
-                var res = planetDatabase[i][7];
+                var res = planetDatabase[i][7] || [];
             };
         };
         for (var i = 0; i < res.length; i++) {
