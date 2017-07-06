@@ -33,10 +33,16 @@ app.dataManager = {
         };
         function getNextPage(data) {
             var nextPage = data.next.replace("http", "https");
+            if (nextPage != null) {
+                nextPage.replace("http", "https");
+            }
             return nextPage
         };
         function getPrevPage(data) {
-            var prevPage = data.previous.replace("http", "https");
+            var prevPage = data.previous;
+            if (prevPage != null) {
+                prevPage.replace("http", "https");
+            }
             return prevPage
         };
         request.send();
