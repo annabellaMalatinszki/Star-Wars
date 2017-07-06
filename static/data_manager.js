@@ -11,20 +11,7 @@ app.dataManager = {
                 var planets = extractPlanets(data);
                 var nextPage = data.next;
                 var prevPage = data.previous;
-                console.log(nextPage);
-                console.log(prevPage);
-                $("#next").off("click");
-                $("#previous").off("click");
-                if (nextPage != null) {
-                    $("#next").on("click", function () {
-                        app.dataManager.getPlanets(nextPage);
-                    });
-                };
-                if (prevPage != null) {
-                    $("#previous").on("click", function () {
-                        app.dataManager.getPlanets(prevPage);
-                    });
-                };
+                app.dom.changePage(nextPage, prevPage);
                 app.dom.displayPlanets(planets);
             };
         };
@@ -50,7 +37,7 @@ app.dataManager = {
 
     getResident: function (resPage) {
         var request = new XMLHttpRequest();
-        request.open("GET", resPage, true);
+        request.open("GET", resPage.replace("http", "https"), true);
 
         request.onload = function () {
             if (request.status >= 200 && request.status < 400) {

@@ -65,9 +65,10 @@ app.dom = {
                 var res = planetDatabase[i][7] || [];
             };
         };
-        for (var i = 0; i < res.length; i++) {
-            var resPage = res[i].replace("http", "https");
-            app.dataManager.getResident(resPage);
+        if (res != undefined) {
+            for (var i = 0; i < res.length; i++) {
+                app.dataManager.getResident(resPage);
+            };
         };
     },
 
@@ -92,5 +93,19 @@ app.dom = {
                                                             <td>${birthYear}</td>
                                                             <td>${gender}</td>
                                                         </tr>`);
+    },
+    changePage: function (nextPage, prevPage) {
+        $("#next").off("click");
+        $("#previous").off("click");
+        if (nextPage != null) {
+            $("#next").on("click", function () {
+                app.dataManager.getPlanets(nextPage);
+            });
+        };
+        if (prevPage != null) {
+            $("#previous").on("click", function () {
+                app.dataManager.getPlanets(prevPage);
+            });
+        };
     }
 }
