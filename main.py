@@ -94,7 +94,7 @@ def vote():
     if g.user:
         user = session["user"]
         planet_id = request.form["planet_id"]
-        planet_name = request.from["planet_name"]
+        planet_name = request.form["planet_name"]
         voted = vote_manager.register_vote(user, planet_id, planet_name)
         if voted:
             flash("Voted on {}.".format(planet_name))
