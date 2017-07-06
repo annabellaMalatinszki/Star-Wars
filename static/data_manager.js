@@ -68,9 +68,11 @@ app.dataManager = {
             if (request.status >= 200 && request.status < 400) {
                 data = JSON.parse(request.responseText);
                 if (data === "success") {
-                    app.dom.disableVote(planetId)
+                    console.log("added to database");
+                    app.dom.disableVote(planetId);
                 };
             };
         };
+        request.send();
     }
 }

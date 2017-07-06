@@ -5,7 +5,6 @@ app.init = function () {
     $('#planets_table').on('click', '.vote', function () {
         var planetId = $(this).data("id");
         var planetName = $(this).data("planet_name");
-        console.log(planetId, planetName);
         app.dataManager.sendVote(planetId, planetName);
     });
 };
