@@ -39,6 +39,7 @@ app.dom = {
                                             </tr>`);
 
             $(".vote").on("click", function () {
+                console.log("kdfgkj");
                 if ($(this).data("id") === id) {
                     console.log("voted on", id);
                 };
