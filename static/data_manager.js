@@ -22,7 +22,7 @@ app.dataManager = {
                 };
                 if (prevPage != null) {
                     $("#previous").on("click", function () {
-                        app.dataManager.getPlanets(nextPage);
+                        app.dataManager.getPlanets(prevPage);
                     });
                 };
                 app.dom.displayPlanets(planets);
