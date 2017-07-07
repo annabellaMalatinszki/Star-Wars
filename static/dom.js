@@ -151,8 +151,8 @@ app.dom = {
                                                                 <th>Received Votes</th>
                                                             </tr>`);
             for (var i = 0; i < statData.length; i++) {
-                var planetName = [i][1];
-                var votes = [i][0];
+                var planetName = statData[i][0];
+                var votes = statData[i][1];
                 $("#myModal").find("#modal_table_body").append(`<tr>
                                                                     <td>${planetName}</td>
                                                                     <td>${votes}</td>
