@@ -48,10 +48,10 @@ app.dom = {
 
 
     modalPop: function (planets) {
-        $("#myModal").find(".modal-title").empty();
-        $("#myModal").find("#modal_table_head").empty();
-        $("#myModal").find("#modal_table_body").empty();
         $("#myModal").on('show.bs.modal', function (event) {
+            $("#myModal").find(".modal-title").empty();
+            $("#myModal").find("#modal_table_head").empty();
+            $("#myModal").find("#modal_table_body").empty();
             var button = $(event.relatedTarget);
             var planetDatabase = JSON.parse(planets);
             var residentList = [];
@@ -137,10 +137,10 @@ app.dom = {
 
 
     showStats: function (stats) {
-        $("#myModal").find(".modal-title").empty();
-        $("#myModal").find("#modal_table_head").empty();
-        $("#myModal").find("#modal_table_body").empty();
         $("#myModal").on('show.bs.modal', function (event) {
+            $("#myModal").find(".modal-title").empty();
+            $("#myModal").find("#modal_table_head").empty();
+            $("#myModal").find("#modal_table_body").empty();
             console.log(stats);
             var button = $(event.relatedTarget);
             var statData = JSON.parse(stats);
