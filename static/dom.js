@@ -50,12 +50,24 @@ app.dom = {
     modalPop: function (planets) {
         $("#myModal").on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
-            var planetDatabase = JSON.parse(planets)
+            var planetDatabase = JSON.parse(planets);
             var residentList = [];
             var planetName = $(event.relatedTarget).data("planet");
             var modalTitle = "Residents of " + planetName;
+            $("#myModal").find(".modal-title").empty();
             $("#myModal").find(".modal-title").text(modalTitle);
-            $("#myModal").find("#residents_table_body").empty();
+            $("#myModal").find(".modal_table_head").empty();
+            $("#myModal").find(".modal_table_head").append(`<tr>
+                                                                <th>Name</th>
+                                                                <th>Height</th>
+                                                                <th>Mass</th>
+                                                                <th>Hair color</th>
+                                                                <th>Skin color</th>
+                                                                <th>Eye color</th>
+                                                                <th>Birth year</th>
+                                                                <th>Gender</th>
+                                                            </tr>`);
+            $("#myModal").find("#modal_table_body").empty();
             app.dom.getResidentList(planetDatabase, planetName);
         });
     },
@@ -86,7 +98,7 @@ app.dom = {
         var eyeColor = resident[5];
         var birthYear = resident[6];
         var gender = resident[7];
-        $("#myModal").find("#residents_table_body").append(`<tr>
+        $("#myModal").find("#modal_table_body").append(`<tr>
                                                             <td>${name}</td>
                                                             <td>${height}</td>
                                                             <td>${mass}</td>
@@ -122,19 +134,25 @@ app.dom = {
 
 
     showStats: function (stats) {
-        $("#myModal2").on('show.bs.modal', function (event) {
+        $("#myModal").on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
-            var statData = JSON.parse(stats)
+            var statData = JSON.parse(stats);
             var modalTitle = "Voting Statistics";
-            $("#myModal2").find(".modal-title2").text(modalTitle);
-            $("#myModal2").find("#stats_table_body").empty();
+            $("#myModal").find(".modal-title").empty();
+            $("#myModal").find(".modal-title").text(modalTitle);
+            $("#myModal2").find("#modal_table_head").empty();
+            $("#myModal2").find("#modal_table_head").append(`<tr>
+                                                                <th>Planet Name</th>
+                                                                <th>Received Votes</th>
+                                                            </tr>`);
+            $("#myModal").find("#modal_table_body").empty();
             for (var i = 0; i < statData.length; i++) {
                 var planetName = [i][0];
                 var votes = [i][1];
-                $("#myModal2").find("#stats_table_body").append(`<tr>
+                $("#myModal2").find("#modal_table_body").append(`<tr>
                                                                     <td>${planetName}</td>
                                                                     <td>${votes}</td>
-                                                                </tr>`)
+                                                                </tr>`);
             };
         });
     }
