@@ -90,7 +90,6 @@ app.dataManager = {
             if (request.status >= 200 && request.status < 400) {
                 data = JSON.parse(request.responseText);
                 var stats = JSON.stringify(data);
-                console.log(stats);
                 app.dom.showStats(stats);
             };
         };

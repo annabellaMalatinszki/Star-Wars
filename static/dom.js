@@ -140,8 +140,8 @@ app.dom = {
             var modalTitle = "Voting Statistics";
             $("#myModal").find(".modal-title").empty();
             $("#myModal").find(".modal-title").text(modalTitle);
-            $("#myModal2").find("#modal_table_head").empty();
-            $("#myModal2").find("#modal_table_head").append(`<tr>
+            $("#myModal").find("#modal_table_head").empty();
+            $("#myModal").find("#modal_table_head").append(`<tr>
                                                                 <th>Planet Name</th>
                                                                 <th>Received Votes</th>
                                                             </tr>`);
@@ -149,7 +149,7 @@ app.dom = {
             for (var i = 0; i < statData.length; i++) {
                 var planetName = [i][0];
                 var votes = [i][1];
-                $("#myModal2").find("#modal_table_body").append(`<tr>
+                $("#myModal").find("#modal_table_body").append(`<tr>
                                                                     <td>${planetName}</td>
                                                                     <td>${votes}</td>
                                                                 </tr>`);
