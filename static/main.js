@@ -7,6 +7,10 @@ app.init = function () {
         var planetName = $(this).data("planet_name");
         app.dataManager.sendVote(planetId, planetName);
     });
+    $("#planets_table").on("click", ".residents", function () {
+        var planets = $(this).data("planets");
+        app.dom.modalPop(planets);
+    })
     $("#vote_stats").on("click", function () {
         app.dataManager.getStats();
     });
