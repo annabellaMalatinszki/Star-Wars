@@ -56,8 +56,8 @@ app.dom = {
             var modalTitle = "Residents of " + planetName;
             $("#myModal").find(".modal-title").empty();
             $("#myModal").find(".modal-title").text(modalTitle);
-            $("#myModal").find(".modal_table_head").empty();
-            $("#myModal").find(".modal_table_head").append(`<tr>
+            $("#myModal").find("#modal_table_head").empty();
+            $("#myModal").find("#modal_table_head").append(`<tr>
                                                                 <th>Name</th>
                                                                 <th>Height</th>
                                                                 <th>Mass</th>
