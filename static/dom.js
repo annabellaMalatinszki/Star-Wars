@@ -49,6 +49,9 @@ app.dom = {
 
     modalPop: function (planets) {
         $("#myModal").on('show.bs.modal', function (event) {
+            $("#myModal").find(".modal-title").empty();
+            $("#myModal").find("#modal_table_head").empty();
+            $("#myModal").find("#modal_table_body").empty();
             var button = $(event.relatedTarget);
             var planetDatabase = JSON.parse(planets);
             var residentList = [];
@@ -108,9 +111,6 @@ app.dom = {
                                                             <td>${birthYear}</td>
                                                             <td>${gender}</td>
                                                         </tr>`);
-        $("#myModal").find(".modal-title").empty();
-        $("#myModal").find("#modal_table_head").empty();
-        $("#myModal").find("#modal_table_body").empty();
     },
 
 
@@ -138,6 +138,9 @@ app.dom = {
 
     showStats: function (stats) {
         $("#myModal").on('show.bs.modal', function (event) {
+            $("#myModal").find(".modal-title").empty();
+            $("#myModal").find("#modal_table_head").empty();
+            $("#myModal").find("#modal_table_body").empty();
             console.log(stats);
             var button = $(event.relatedTarget);
             var statData = JSON.parse(stats);
@@ -149,15 +152,12 @@ app.dom = {
                                                             </tr>`);
             for (var i = 0; i < statData.length; i++) {
                 var planetName = [i][1];
-                var votes = [i][2];
+                var votes = [i][0];
                 $("#myModal").find("#modal_table_body").append(`<tr>
                                                                     <td>${planetName}</td>
                                                                     <td>${votes}</td>
                                                                 </tr>`);
             };
-            $("#myModal").find(".modal-title").empty();
-            $("#myModal").find("#modal_table_head").empty();
-            $("#myModal").find("#modal_table_body").empty();
         });
     }
 }
