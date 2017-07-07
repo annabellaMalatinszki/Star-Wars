@@ -108,6 +108,9 @@ app.dom = {
                                                             <td>${birthYear}</td>
                                                             <td>${gender}</td>
                                                         </tr>`);
+        $("#myModal").find(".modal-title").empty();
+        $("#myModal").find("#modal_table_head").empty();
+        $("#myModal").find("#modal_table_body").empty();
     },
 
 
@@ -135,25 +138,26 @@ app.dom = {
 
     showStats: function (stats) {
         $("#myModal").on('show.bs.modal', function (event) {
+            console.log(stats);
             var button = $(event.relatedTarget);
             var statData = JSON.parse(stats);
             var modalTitle = "Voting Statistics";
-            $("#myModal").find(".modal-title").empty();
             $("#myModal").find(".modal-title").text(modalTitle);
-            $("#myModal").find("#modal_table_head").empty();
             $("#myModal").find("#modal_table_head").append(`<tr>
                                                                 <th>Planet Name</th>
                                                                 <th>Received Votes</th>
                                                             </tr>`);
-            $("#myModal").find("#modal_table_body").empty();
             for (var i = 0; i < statData.length; i++) {
-                var planetName = [i][0];
-                var votes = [i][1];
+                var planetName = [i][1];
+                var votes = [i][];
                 $("#myModal").find("#modal_table_body").append(`<tr>
                                                                     <td>${planetName}</td>
                                                                     <td>${votes}</td>
                                                                 </tr>`);
             };
+            $("#myModal").find(".modal-title").empty();
+            $("#myModal").find("#modal_table_head").empty();
+            $("#myModal").find("#modal_table_body").empty();
         });
     }
 }
