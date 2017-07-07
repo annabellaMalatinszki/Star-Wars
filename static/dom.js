@@ -25,7 +25,7 @@ app.dom = {
             } else {
                 var res = planetDatabase[i][6] + " residents(s)";
                 var residents = `<td class="residents">
-                                <button type="button" class="btn btn-info modal-button" data-toggle="modal" data-target="#myModal" data-planet="${name}" data-planets="${planets}">${res}</td>`;
+                                <button type="button" class="btn btn-info modal-button" data-toggle="modal" data-target="#myModal" data-planet="${name}">${res}</td>`;
             };
             $("#planets_table_body").append(`<tr>
                                                 <td class="planet_name">${name}</td>
@@ -43,6 +43,7 @@ app.dom = {
                 $(".vote").hide()
             };
         };
+        app.dom.modalPop(planets);
     },
 
 
